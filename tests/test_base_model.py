@@ -8,11 +8,8 @@ import os
 import json
 
 
-<<<<<<< HEAD
-class TestBaseModel(unittest.TestCase):
-=======
 class TestBaseModel_initialization(unittest.TestCase):
->>>>>>> 3cc3278a20060727dcf8bc3b1062e1482a069bf2
+
     """This is a test class for the BaseModel"""
 
     def test_type_BaseModel(self):
@@ -65,7 +62,6 @@ class TestBaseModel_initialization(unittest.TestCase):
         user2 = BaseModel()
         self.assertLess(user1.updated_at, user2.updated_at)
 
-<<<<<<< HEAD
     def test_save_method(self):
         """unittest for the save method"""
         user = BaseModel()
@@ -74,8 +70,6 @@ class TestBaseModel_initialization(unittest.TestCase):
         update1 = user.updated_at
         self.assertNotEqual(update0, update1)
 
-=======
->>>>>>> 3cc3278a20060727dcf8bc3b1062e1482a069bf2
     def test_kwargs_initialization(self):
         """unittest for initialization using kwargs"""
 
@@ -88,19 +82,14 @@ class TestBaseModel_initialization(unittest.TestCase):
 
     def test_kwargs_and_args_initialization(self):
         """unittest for initialization using kwargs"""
-<<<<<<< HEAD
-=======
 
->>>>>>> 3cc3278a20060727dcf8bc3b1062e1482a069bf2
         dt = datetime.today()
         d = dt.isoformat()
         d_value = dt.strptime(d, '%Y-%m-%dT%H:%M:%S.%f')
         user = BaseModel("23", d, d, id="1", created_at=d, updated_at=d)
         self.assertEqual(user.id, "1")
-<<<<<<< HEAD
-        self.assertEqual(user.created_at, dt_iso)
-        self.assertEqual(user.updated_at, dt_iso)
-=======
+        self.assertEqual(user.created_at, d_value)
+        self.assertEqual(user.updated_at, d_value)
         self.assertEqual(user.created_at, d_value)
         self.assertEqual(user.updated_at, d_value)
 
