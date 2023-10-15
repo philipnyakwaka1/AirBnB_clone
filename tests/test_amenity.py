@@ -1,4 +1,4 @@
- #!/usr/bin/python3
+#!/usr/bin/python3
 """This module defines the unittest for amenity.py module"""
 import unittest
 from datetime import datetime
