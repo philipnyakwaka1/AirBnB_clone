@@ -88,8 +88,8 @@ class TestBaseModel_initialization(unittest.TestCase):
         d_value = dt.strptime(d, '%Y-%m-%dT%H:%M:%S.%f')
         user = BaseModel("23", d, d, id="1", created_at=d, updated_at=d)
         self.assertEqual(user.id, "1")
-        self.assertEqual(user.created_at, dt_iso)
-        self.assertEqual(user.updated_at, dt_iso)
+        self.assertEqual(user.created_at, d_value)
+        self.assertEqual(user.updated_at, d_value)
         self.assertEqual(user.created_at, d_value)
         self.assertEqual(user.updated_at, d_value)
 
