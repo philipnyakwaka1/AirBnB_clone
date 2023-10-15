@@ -5,6 +5,7 @@
 import uuid
 from datetime import datetime
 
+
 class BaseModel:
     """
     Base class for instances objects for the HBnBConsole
@@ -40,7 +41,7 @@ class BaseModel:
             from models import storage
             self.id = str(uuid.uuid4())
             self.created_at = self.updated_at = datetime.now()
-            storage.new()
+            storage.new(self)
 
     def __str__(self):
         """
