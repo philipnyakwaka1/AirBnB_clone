@@ -3,6 +3,9 @@
 HBNBCommand class.
 """
 import cmd
+import json
+from models.base_model import BaseModel
+from models import storage
 
 
 class HBNBCommand(cmd.Cmd):
@@ -49,7 +52,7 @@ class HBNBCommand(cmd.Cmd):
             print("** class name missing **")
             return
         class_name = args[0]
-        if class_name not in models.classes:
+        if class_name not in ("BaseModel",):
             print("** class doesn't exist **")
             return
         if len(args) < 2:
@@ -57,8 +60,8 @@ class HBNBCommand(cmd.Cmd):
             return
         instance_id = args[1]
         key = "{}.{}".format(class_name, instance_id)
-        if key in models.storage.all():
-            print(models.storage.all()[key])
+        if key in storage.all():
+            print(storage.all()[key])
         else:
             print("** no instance found **")
 
@@ -70,7 +73,7 @@ class HBNBCommand(cmd.Cmd):
             return
 
         class_name = args[0]
-        if class_name not in models.classes:
+        if class_name not in ("BaseModel",):
             print("** class doesn't exist **")
             return
         if len(args) < 2:
@@ -79,10 +82,10 @@ class HBNBCommand(cmd.Cmd):
 
         instance_id = args[1]
         key = "{}.{}".format(class_name, instance_id)
-        all_instances = models.storage.all()
+        all_instances = storage.all()
         if key in all_instances:
             del all_instances[key]
-            models.storage.save()
+            storage.save()
         else:
             print("** no instance found **")
 
@@ -90,13 +93,13 @@ class HBNBCommand(cmd.Cmd):
         """Prints all instances or all instances by class name"""
         args = args.split()
         if not args:
-            instances = models.storage.all()
+            instances = storage.all()
             for instance in instances.values():
                 print(instance)
         else:
             class_name = args[0]
-            if class_name in models.classes:
-                instances = models.storage.all(class_name)
+            if class_name in ("BaseModel",):
+                instances = storage.all(class_name)
                 for instance in instances.values():
                     print(instance)
             else:
@@ -109,7 +112,7 @@ class HBNBCommand(cmd.Cmd):
             print("** class name missing **")
             return
         class_name = args[0]
-        if class_name not in models.classes:
+        if class_name not in ("BaseModel",):
             print("** class doesn't exist **")
             return
         if len(args) < 2:
@@ -117,7 +120,7 @@ class HBNBCommand(cmd.Cmd):
             return
         instance_id = args[1]
         key = "{}.{}".format(class_name, instance_id)
-        all_instances = models.storage.all()
+        all_instances = storage.all()
         if key in all_instances:
             if len(args) < 3:
                 print("** attribute name missing **")
