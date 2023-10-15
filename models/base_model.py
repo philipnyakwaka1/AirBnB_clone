@@ -5,6 +5,7 @@
 import uuid
 from datetime import datetime
 
+
 class BaseModel:
     """
     Base class for instances objects for the HBnBConsole
