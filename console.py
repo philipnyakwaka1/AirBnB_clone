@@ -27,13 +27,14 @@ class HBNBCommand(cmd.Cmd):
             return
 
         class_name = arg.split()[0]
-        valid_classes = ["BaseModel", "User", "State", "City", "Amenity", "Place", "Review"]
+        valid_cls = ["BaseModel", "User", "State",
+                     "City", "Amenity", "Place", "Review"]
 
-        if class_name not in valid_classes:
+        if class_name not in valid_cls:
             print("** class doesn't exist **")
             return
-        
-        class_to_create = models.classes.get(class_name)
+
+        class_to_create = HBNBCommand.classes.get(class_name)
         if class_to_create:
             new_instance = class_to_create()
             new_instance.save()
