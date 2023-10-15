@@ -1,19 +1,18 @@
 #!/usr/bin/python3
-
+"""
+HBNBCommand class.
+"""
 import cmd
 
 
 class HBNBCommand(cmd.Cmd):
+    prompt = "(hbnb) "
 
-    """custom prompt"""
-
-    prompt = "(hbnb)"
-
-    def do_quit(self):
+    def do_quit(self, arg):
         """Quit command to exit program"""
         return True
 
-    def do_EOF(self):
+    def do_EOF(self, arg):
         """Exit program when EOF is encoured (ctrl+D)"""
         return True
 
