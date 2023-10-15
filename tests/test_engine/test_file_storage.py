@@ -15,6 +15,7 @@ from models.engine.file_storage import FileStorage
 from models.state import State
 from models.user import User
 
+
 class TestFileStorage_initialization(unittest.TestCase):
 
     """This is a test class for the FileStorage"""
@@ -25,11 +26,11 @@ class TestFileStorage_initialization(unittest.TestCase):
 
     def test_if_file_path_is_string(self):
         """This method tests if an instance is of type FileStorage"""
-        self.assertEqual(str, type(FileStorage._FileStorage.__file_path))
+        self.assertEqual(str, type(FileStorage._FileStorage__file_path))
 
     def test_if_file_object_is_dict(self):
         """This method tests if an instance is of type FileStorage"""
-        self.assertEqual(dict, type(FileStorage._FileStorage.__object))
+        self.assertEqual(dict, type(FileStorage._FileStorage__objects))
 
 
 class TestFileStorage_save(unittest.TestCase):
@@ -56,6 +57,6 @@ class TestFileStorage_save(unittest.TestCase):
         except Exception as e:
             pass
 
+
 if __name__ == "__main__":
     unittest.main()
-    
