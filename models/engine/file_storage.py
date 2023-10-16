@@ -33,7 +33,7 @@ class FileStorage:
           serializes __objects to the JSON file (path: __file_path)
         """
         data = {}
-        for key, obj in data.items():
+        for key, obj in FileStorage.__objects.items():
             data[key] = obj.to_dict()
 
         with open(FileStorage.__file_path, 'w') as f:
@@ -52,7 +52,7 @@ class FileStorage:
                     class_name, obj_id = key.split(".")
                     obj_class = globals()[class_name]
                     obj = obj_class(**value)
-                    FileStorage.__objects[key] = new_obj
+                    FileStorage.__objects[key] = obj
 
         except FileNotFoundError:
             pass
