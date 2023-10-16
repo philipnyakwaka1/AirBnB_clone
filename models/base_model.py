@@ -74,7 +74,10 @@ class BaseModel:
         """
 
         object_dict = self.__dict__.copy()
-        object_dict['__class__'] = self.__class__.__name__
         object_dict['created_at'] = self.created_at.isoformat()
         object_dict['updated_at'] = self.updated_at.isoformat()
+
+        if '__class__' in obj_dict:
+            del obj_dict['__class__']
+
         return object_dict
