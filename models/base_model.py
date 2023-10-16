@@ -24,10 +24,11 @@ class BaseModel:
         """
 
         if not kwargs:
-            import models
+            import __init__
             self.id = str(uuid.uuid4())
             self.created_at = self.updated_at = datetime.now()
-            models.storage.new(self)
+            __init__.storage.new(self)
+
         else:
             for key, value in kwargs.items():
                 if key == 'created_at' or key == 'updated_at':
@@ -53,9 +54,9 @@ class BaseModel:
         """
         updates the public instance attribute  with the current datetime
         """
-        import models
+        import __init__
         self.updated_at = datetime.now()
-        models.storage.save()
+        __init__.storage.save()
 
     def to_dict(self):
         """
