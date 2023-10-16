@@ -94,8 +94,8 @@ class HBNBCommand(cmd.Cmd):
             print("** class doesn't exist **")
         else:
             class_name = args[0]
-            print([str(instance) for instance in
-                  storage.all(class_name).values()])
+            instances = storage.all(class_name)
+            print([str(instance) for key, instance in instances.items()])
 
     def do_update(self, arg):
         """
