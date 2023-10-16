@@ -3,6 +3,13 @@
 """Module defines FileStorage class for hbnb clone storage management"""
 
 import json
+from models.base_model import BaseModel
+from models.user import User
+from models.state import State
+from models.city import City
+from models.amenity import Amenity
+from models.place import Place
+from models.review import Review
 
 
 class FileStorage:
@@ -13,6 +20,9 @@ class FileStorage:
     """
     __file_path = 'file.json'
     __objects = {}
+    classes = {"BaseModel": BaseModel, "User": User, "Place": Place,
+               "Amenity": Amenity, "City": City, "Review": Review,
+               "State": State}
 
     def all(self):
         """
@@ -50,7 +60,7 @@ class FileStorage:
                 data = json.load(f)
                 for key, value in data.items():
                     class_name, obj_id = key.split(".")
-                    obj_class = globals()[class_name]
+                    obj_class = FileStorage.classes[class_name]
                     obj = obj_class(**value)
                     FileStorage.__objects[key] = obj
 
