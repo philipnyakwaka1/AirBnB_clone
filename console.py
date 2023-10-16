@@ -94,8 +94,8 @@ class HBNBCommand(cmd.Cmd):
             print("** class doesn't exist **")
         else:
             class_name = args[0]
-            print([str(instance) for key,
-                  instance in storage.all(class_name).values()])
+            print([str(instance) for instance in
+                  storage.all(class_name).values()])
 
     def do_update(self, arg):
         """
@@ -140,7 +140,7 @@ class HBNBCommand(cmd.Cmd):
             print("** class doesn't exist **")
         else:
             class_name = args[0]
-            count = len(models.storage.all(class_name))
+            count = len(storage.all(class_name))
             print(count)
 
 
