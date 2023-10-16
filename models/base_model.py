@@ -24,7 +24,7 @@ class BaseModel:
         """
 
         if not kwargs:
-            import __init__
+            from models import __init__
             self.id = str(uuid.uuid4())
             self.created_at = self.updated_at = datetime.now()
             __init__.storage.new(self)
@@ -54,7 +54,7 @@ class BaseModel:
         """
         updates the public instance attribute  with the current datetime
         """
-        import __init__
+        from models import __init__
         self.updated_at = datetime.now()
         __init__.storage.save()
 
