@@ -3,13 +3,7 @@
 """Module defines FileStorage class for hbnb clone storage management"""
 
 import json
-from models.amenity import Amenity
-from models.base_model import BaseModel
-from models.city import City
-from models.place import Place
-from models.review import Review
-from models.state import State
-from models.user import User
+import os
 
 
 class FileStorage:
@@ -57,8 +51,8 @@ class FileStorage:
                 data = json.load(f)
                 for key, value in data.items():
                     class_name, obj_id = key.split(".")
-                    obj_class = self.get_class_by_name(class_name)
-                    new_obj = obj_class(**value)
+                    obj_class = globals()[class_name]
+                    obj = obj_class(**value)
                     FileStorage.__objects[key] = new_obj
 
         except FileNotFoundError:
