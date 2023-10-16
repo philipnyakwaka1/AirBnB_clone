@@ -74,5 +74,5 @@ class BaseModel:
         object_dict = self.__dict__.copy()
         object_dict['created_at'] = self.created_at.isoformat()
         object_dict['updated_at'] = self.updated_at.isoformat()
-        my_dict['__class__'] = self.__class__.__name__
-        return object_dict
+        object_dict['__class__'] = self.__class__.__name__
+        return objec_dict
